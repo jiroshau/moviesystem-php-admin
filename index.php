@@ -42,6 +42,17 @@ include 'database/database.php';
       font-weight: 600;
       color: #34495e;
     }
+
+    .btn-custom{
+      background-color:rgb(3, 104, 151);
+      color: white;
+      border: none;
+    }
+
+    .btn-hover{
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      background-color: #34495e;
+    }
     .no-movies-text {
       font-size: 20px;
       color: #95a5a6;
