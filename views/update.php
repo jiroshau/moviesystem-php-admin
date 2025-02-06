@@ -1,15 +1,16 @@
 <?php
-// Include database connection
+
 include '../database/database.php';
 
-// Get the recipe ID from the URL
+
 $id = $_GET['id'];
 
-// Fetch the recipe from the database
+
 $res = $conn->query("SELECT * FROM movies WHERE id = $id");
 $row = $res->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    // Retrieve form data
     $title = $_POST['title'];
     $genre = $_POST['genre'];
     $rating = $_POST['rating'];
@@ -29,13 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
-<script>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Update Recipe</title>
+  <title>Update Movie</title>
   <link href="../statics/css/bootstrap.min.css" rel="stylesheet">
-  <script src="../statics/js/bootstrap.js"></script>
+<script src="../statics/js/bootstrap.js"></script>
   <script src="../statics/js/bootstrap.bundle.js"></script>
+    
 </head>
 <body>
   <div class="container mt-5">
@@ -43,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <form action="update.php?id=<?= $row['id']; ?>" method="POST">
       <div class="mb-3">
         <label for="title" class="form-label">Movie Title</label>
-        <input type="text" class="form-control" id="title" name="title" value="<?= $row['title']; ?>" required>
+        <textarea class="form-control" id="title" name="title" rows="1" required><?= $row['title']; ?></textarea>
       </div>
       <div class="mb-3">
         <label for="genre" class="form-label">Genre</label>
@@ -51,11 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       </div>
       <div class="mb-3">
         <label for="rating" class="form-label">Rating</label>
-        <textarea class="form-control" id="rating" name="rating" rows="4" required><?= $row['rating']; ?></textarea>
+        <textarea class="form-control" id="rating" name="rating" rows="1" required><?= $row['rating']; ?></textarea>
       </div>
       <div class="mb-3">
         <label for="year" class="form-label">Year</label>
-        <textarea class="form-control" id="year" name="year" rows="4" required><?= $row['year']; ?></textarea>
+        <textarea class="form-control" id="year" name="year" rows="1" required><?= $row['year']; ?></textarea>
       </div>
       <button type="submit" class="btn btn-success">Update Movie</button>
     </form>
