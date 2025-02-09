@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <script src="../statics/js/bootstrap.js"></script>
   <script src="../statics/js/bootstrap.bundle.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -104,7 +106,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <label for="year" class="form-label">Year</label>
         <input type="number" class="form-control" id="year" name="year" min="1900" max="<?= date('Y') ?>" value="<?= $row['year']; ?>" required>
       </div>
-      <button type="submit" class="btn btn-success w-100">Update Movie</button>
+      <button type="submit" class="btn btn-success w-100">
+        Update Movie <i class="fa-solid fa-pencil"></i>
+      </button>
     </form>
   </div>
 
