@@ -1,27 +1,21 @@
 <?php
-// Include database connection
 include '../database/database.php';
 
-// Get the movie ID from the URL
 $id = $_GET['id'];
 
-// Fetch the movie from the database
 $res = $conn->query("SELECT * FROM movies WHERE id = $id");
 $row = $res->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    // Retrieve form data
     $title = $_POST['title'];
     $genre = $_POST['genre'];
     $rating = $_POST['rating'];
     $year = $_POST['year'];
 
-    // Prepare the SQL statement to prevent SQL injection
     $stmt = $conn->prepare("UPDATE movies SET title = ?, genre = ?, rating = ?, year = ? WHERE id = ?");
     $stmt->bind_param("ssssi", $title, $genre, $rating, $year, $id);
 
     if ($stmt->execute()) {
-        // Redirect to the main page after successful update
         header("Location: ../index.php");
         exit;
     } else {
